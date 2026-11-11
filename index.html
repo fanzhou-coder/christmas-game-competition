@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="10 gifts. 3 chances. 60 seconds. Join the SafeDriver Group Christmas challenge.">
+<title>Christmas Wish Challenge · SafeDriver Group</title>
+<style>
+:root{--night:#14213d;--deep:#0b1426;--snow:#f1f5f9;--red:#d62839;--gold:#f4b942;--muted:#a5b5cf;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--deep);color:var(--snow);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px 16px max(24px,env(safe-area-inset-bottom))}main{max-width:900px;margin:auto}.mast{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}.brand{font-size:19px;font-weight:750;line-height:1.1}.season{font:12px monospace;letter-spacing:1px;color:var(--muted)}h1{font:bold clamp(23px,5vw,36px)/1.2 "Courier New",monospace;color:var(--gold);margin:0 0 10px}.intro-copy{color:var(--muted);margin:0 0 20px;line-height:1.5}.hud{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:12px 14px;background:#192843;border:1px solid #35445a;font:bold 14px monospace}.hud strong{color:var(--gold)}.stage{position:relative;border:3px solid var(--snow);background:var(--night);line-height:0;overflow:hidden}canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;image-rendering:auto;touch-action:none}.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;line-height:1.5;background:rgba(11,20,38,.91);z-index:3}.overlay[hidden]{display:none}.overlay{align-items:flex-start;overflow:auto}.overlay-inner{width:100%;max-width:390px;margin:auto;flex-shrink:0}.language-field{margin-bottom:12px}.overlay h2{color:var(--gold);font:bold 22px "Courier New",monospace;margin:0 0 10px}.overlay p{margin:10px 0;font-size:14px}label{display:block;text-align:left;font-size:14px;font-weight:650;margin-bottom:6px}input,select{width:100%;font:16px system-ui;padding:10px 12px;border:2px solid #64748b;background:var(--snow);color:var(--deep);border-radius:4px}button{font:bold 15px/1.4 "Courier New",monospace;background:var(--red);color:var(--snow);border:0;border-bottom:4px solid #8f1a26;padding:10px 16px;border-radius:4px;cursor:pointer}button:active{transform:translateY(2px)}button:disabled{opacity:.6;cursor:wait}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}#start{width:100%;margin-top:10px}.small{font-size:12px!important;color:var(--muted)}.card{margin-top:16px;background:var(--snow);color:var(--night);padding:18px;border-radius:6px;line-height:1.5}.card h2{font:bold 15px monospace;margin:0 0 8px}.card p{margin:0;font-size:18px}.pips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}.pips i{width:12px;height:12px;border-radius:2px;background:#c4cedd}.pips i.on{background:var(--red)}.card small{display:block;color:#526078;margin-top:8px}.pad{display:none;justify-content:space-between;gap:12px;margin-top:12px}.pad button{flex:1;padding:16px 0;font-size:20px;touch-action:none;user-select:none;-webkit-user-select:none}.controls{margin:12px 0 20px;color:var(--muted);font-size:13px;line-height:1.5}kbd{background:#23314b;padding:2px 5px;border-radius:3px}.results{margin-top:16px;padding:20px;border:1px solid #35445a;border-radius:6px}.results h2{margin-top:0;color:var(--gold);font:bold 23px monospace}.results p{line-height:1.5}.results button{margin-right:8px;margin-top:8px}.wishes{padding-left:22px;color:var(--snow)}.wishes li{padding:8px 0;line-height:1.5}.leaderboard{margin-top:24px;background:#14213d;border:1px solid #35445a;border-radius:6px;padding:18px}.board-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.board-heading h2{font:bold 20px monospace;margin:0;color:var(--gold)}.board-heading button{background:#283b5b;border-bottom-color:#101b30;font-size:12px;padding:6px 10px}.board-note{font-size:13px;color:var(--muted);line-height:1.5}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:12px 8px;text-align:left;border-top:1px solid #35445a}th{color:var(--muted);font-size:12px;font-weight:500}td:nth-last-child(-n+2),th:nth-last-child(-n+2){text-align:right}.empty{text-align:center!important;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.6;margin-top:24px}.error{color:#ffadb4;font-size:13px;min-height:1em}.route{height:4px;background:#283b5b}.route span{display:block;height:100%;background:var(--gold);width:0}.status-message{font-size:13px;color:var(--muted)}[hidden]{display:none!important}@media(pointer:coarse){.pad{display:flex}}@media(max-width:540px){body{padding:16px 10px}.season{font-size:10px}.mast{margin-bottom:20px}.overlay{position:relative;min-height:290px}.overlay[hidden]{display:none}.hud{font-size:12px;padding:10px}.card p{font-size:16px}.board-heading h2{font-size:17px}.controls{font-size:12px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+.tree-wish{position:absolute;z-index:2;max-width:calc(100% - 16px);padding:10px 12px;border:3px solid var(--gold);border-radius:8px;background:var(--snow);color:var(--night);font:14px/1.35 system-ui,sans-serif;pointer-events:none;box-shadow:0 4px 16px #0004}
+.tree-wish::after{content:"";position:absolute;left:var(--tail,50%);bottom:-11px;margin-left:-8px;border:8px solid transparent;border-top-color:var(--gold);border-bottom:0}
+/* Extra sky keeps a full wish above even the highest tree on small screens. */
+@media(max-width:640px){.stage{padding-top:96px;background:#0c1530}.tree-wish{font-size:12px}}
+.stage:lang(de){padding-top:72px;background:#0c1530}.tree-wish{overflow-wrap:anywhere}@media(max-width:640px){.stage:lang(de){padding-top:128px}}
+</style></head><body><main>
+<header class="mast"><div class="brand">SafeDriver<br>Group</div><div class="season" data-i18n="season">CHRISTMAS CHALLENGE · 2026</div></header>
+<h1 data-i18n="heading">Big jumps. Bigger wishes.</h1><p class="intro-copy" data-i18n="introCopy">10 gifts. 3 chances. 60 seconds. How many Christmas wishes can you unwrap?</p>
+<div class="hud"><span id="player-name">Your Christmas run</span><span><span data-i18n="gifts">Gifts</span> <strong id="score">0 / 10</strong></span><span aria-label="Time remaining" data-i18n-aria="timeLabel"><strong id="timer">60s</strong></span><span id="lives">3 lives</span></div>
+<div class="stage" id="game-stage"><canvas id="c" width="640" height="360" tabindex="0" data-i18n-aria="canvasLabel" aria-label="Side-scrolling Christmas platform game. Drive the ennooRental car with arrow keys or A and D. Jump with Space, W or Up."></canvas><div class="tree-wish" id="tree-wish" aria-hidden="true" hidden></div>
+<div class="overlay" id="intro"><div class="overlay-inner"><h2 data-i18n="introTitle">Your wishes await.</h2><p data-i18n="instructions">Hit gifts from below. Snowmen come in groups from gift three. Later gifts move—time your jumps! Jump on snowmen to clear a landing.</p><form id="entry"><div class="language-field"><label for="language" data-i18n="languageLabel">Language / Sprache</label><select id="language" name="language"><option value="en" lang="en">English</option><option value="de" lang="de">Deutsch</option></select></div><label for="nickname" data-i18n="nicknameLabel">Your nickname</label><input id="nickname" name="nickname" maxlength="16" required autocomplete="nickname" placeholder="e.g. SantaOnWheels" data-i18n-placeholder="nicknamePlaceholder" aria-describedby="nickname-note"><p id="nickname-note" class="small" data-i18n="nicknameNote">Your nickname appears on the shared leaderboard. Same browser, same player.</p><button id="start" type="submit" data-i18n="start">Let’s unwrap →</button></form><p id="entry-error" class="error" role="alert"></p><p class="small" data-i18n="mix">10 wishes from our collection of 50. Two warm-up gifts. Eight moving targets. Can you get them all? Every run is a fresh mix.</p></div></div></div>
+<div class="route" aria-hidden="true"><span id="progress"></span></div>
+<div class="pad" aria-label="Touch game controls" data-i18n-aria="touchLabel"><button id="bl" aria-label="Move left" data-i18n-aria="leftLabel">◀</button><button id="bj" aria-label="Jump" data-i18n-aria="jump" data-i18n="jump">Jump</button><button id="br" aria-label="Move right" data-i18n-aria="rightLabel">▶</button></div>
+<p class="controls"><span data-i18n="controls"></span><br><span data-i18n="controlsNote"></span></p>
+<div class="card" aria-live="polite" aria-atomic="true"><div class="pips" id="pips" aria-hidden="true"></div><h2 id="wish-label">YOUR NEXT WISH IS ONE JUMP AWAY</h2><p id="wish">Bump a gift from below to unwrap a little Christmas cheer.</p><small id="personal-best">Your best attempt will be remembered in this browser.</small></div>
+<section class="results" id="results" hidden tabindex="-1" aria-labelledby="result-title"><h2 id="result-title"></h2><p id="result-copy"></p><p id="save-status" class="status-message" role="status"></p><button id="again" data-i18n="again">Play again</button><button id="change-name" data-i18n="changeName">Change nickname</button><button id="retry-save" hidden data-i18n="retrySave">Retry saving score</button><details><summary data-i18n="collected">Your unwrapped wishes</summary><ol id="collected" class="wishes"></ol></details></section>
+<section class="leaderboard" aria-labelledby="board-title"><div class="board-heading"><h2 id="board-title" data-i18n="boardTitle">Christmas leaderboard</h2><button id="refresh-board" data-i18n="refresh">Refresh</button></div><p class="board-note" data-i18n="rankingRule">More wishes rank higher. For equal scores, less time taken wins.</p><p class="board-note" id="board-note" role="status">Loading leaderboard…</p><div class="table-wrap"><table><thead><tr><th scope="col" data-i18n="rank">Rank</th><th scope="col" data-i18n="driver">Driver</th><th scope="col" data-i18n="gifts">Gifts</th><th scope="col" data-i18n="timeTaken">Time taken</th></tr></thead><tbody id="board"></tbody></table></div></section>
+<footer><span data-i18n="footer">Happy holidays from SafeDriver Group</span><br><span data-i18n="footerNote">Play again as often as you like. Your best score counts.</span></footer>
+</main><script src="config.js"></script><script>
+const WISHES=[
+  "May your inbox be empty and your coffee strong in the new year.",
+  "Wishing you a Christmas with zero delays, unlike the U-Bahn.",
+  "May every route in 2027 be green lights all the way.",
+  "Merry Christmas! Log off, recharge, and charge your EV too.",
+  "Hope your holidays are smoother than an empty Autobahn at 5 a.m.",
+  "May the new year bring the promotion you’ve earned and the parking spot you deserve.",
+  "Wishing you cozy evenings, great food, and zero work notifications.",
+  "May your Glühwein be hot and your Wi-Fi be stable.",
+  "Here’s to a 2027 with fewer meetings and more “let’s just do it.”",
+  "Merry Christmas to everyone who makes every pick-up on time.",
+  "May your holidays have more laughs than your team chat.",
+  "Wishing you time for friends, family, and an uninterrupted nap.",
+  "May your 2027 goals be bigger than your Christmas dinner plate.",
+  "Enjoy the break. The gym can wait until January 2nd. Maybe the 3rd.",
+  "May your year ahead be electric: quiet, powerful, and full of range.",
+  "Thanks for the teamwork this year. You made the hard days easier.",
+  "Wishing you snow when you want it and clear roads when you need them.",
+  "May your holiday playlist never play the same song twice.",
+  "Hope Santa’s sleigh delivers exactly what’s on your list.",
+  "May 2027 bring new ideas, new wins, and zero “per my last email.”",
+  "Merry Christmas! You’ve earned every cookie.",
+  "Here’s to the colleagues who bring the best snacks.",
+  "Wishing you a break so good you forget your password.",
+  "May your journey into 2027 be comfortable, punctual, and first class.",
+  "Time to switch to holiday mode. No charger needed.",
+  "May your biggest challenge this week be choosing the last cookie.",
+  "Wishing you Christmas lights, calm days, and a fully charged battery, inside and out.",
+  "Here’s to a year of growth: for you, for the team, and for your plants.",
+  "May your 2027 start with a plan and end with a story worth telling.",
+  "Merry Christmas! Pack the big suitcase. Adventure is on next year’s route.",
+  "Thanks for being the reason our clients say, “Wow, that was smooth.”",
+  "May your holidays be filled with the good kind of busy.",
+  "Wishing you a calm December and a bold January.",
+  "Hope your Christmas tree stays upright and your family stays chill.",
+  "May your best moments of 2026 be just the opening act.",
+  "Cheers to every early start, late finish, and last-minute save this year.",
+  "Merry Christmas! Take the scenic route this season.",
+  "May your holidays be tasty and your leftovers endless.",
+  "Wishing you the energy of a fast charger and the calm of a snowy morning.",
+  "Here’s to a 2027 with fewer deadlines and more high-fives.",
+  "May every plan in the new year land on time, on budget, and on point.",
+  "Merry Christmas! The world needs more people who show up like you do.",
+  "Wishing you a holiday with fewer screens and more fireplaces.",
+  "Hope your Christmas is full of surprises, the good ones, not the Deutsche Bahn kind.",
+  "May 2027 give you more free weekends than you planned for.",
+  "Take a breath and look back. You did good work this year.",
+  "Wishing you health, happiness, and a really good book.",
+  "May your year ahead feel like a green wave: one good light after another.",
+  "Merry Christmas! May the new year ride with you in the front seat.",
+  "See you in 2027: rested, ready, and refreshed."
+];
+const MESSAGES={"en":{"title":"Christmas Wish Challenge · SafeDriver Group","description":"10 gifts. 3 chances. 60 seconds. Join the SafeDriver Group Christmas challenge.","season":"CHRISTMAS CHALLENGE · 2026","heading":"Big jumps. Bigger wishes.","introCopy":"10 gifts. 3 chances. 60 seconds. How many Christmas wishes can you unwrap?","playerDefault":"Your Christmas run","gifts":"Gifts","timeLabel":"Time remaining","canvasLabel":"Side-scrolling Christmas platform game. Drive the ennooRental car with arrow keys or A and D. Jump with Space, W or Up.","introTitle":"Your wishes await.","instructions":"Hit gifts from below. Snowmen come in groups from gift three. Later gifts move—time your jumps! Jump on snowmen to clear a landing.","languageLabel":"Language / Sprache","nicknameLabel":"Your nickname","nicknamePlaceholder":"e.g. SantaOnWheels","nicknameNote":"Your nickname appears on the shared leaderboard. Same browser, same player.","start":"Let’s unwrap →","mix":"10 wishes from our collection of 50. Two warm-up gifts. Eight moving targets. Can you get them all? Every run is a fresh mix.","touchLabel":"Touch game controls","leftLabel":"Move left","jump":"Jump","rightLabel":"Move right","controls":"← → or A / D to drive · Space / ↑ to jump · Tap Jump once per jump.","controlsNote":"Watch for moving gifts. The last deliveries need careful timing. The 60-second clock keeps running if you switch tabs.","wishEmptyLabel":"YOUR NEXT WISH IS ONE JUMP AWAY","wishEmpty":"Bump a gift from below to unwrap a little Christmas cheer.","bestEmpty":"Your best attempt will be remembered in this browser.","best":"Your personal best: {score} / {total} gifts · {time}s left.","wishLabel":"WISH {score} OF {total} · MERRY CHRISTMAS","again":"Play again","changeName":"Change nickname / language","retrySave":"Retry saving score","collected":"Your unwrapped wishes","boardTitle":"Christmas leaderboard","refresh":"Refresh","loading":"Loading leaderboard…","rank":"Rank","driver":"Driver","footer":"Happy holidays from SafeDriver Group","footerNote":"Play again as often as you like. Your best score counts.","livesOne":"1 life","livesMany":"{count} lives","complete":"10 wishes. Christmas legend!","timeUp":"Time’s up. Wishes delivered!","noLives":"Out of chances. Still full of cheer.","result":"{name}, you unwrapped {score} of {total} wishes with {time} seconds left. Merry Christmas from SafeDriver Group!","nameError":"Please enter a nickname (1–16 characters).","startError":"The game could not start. Check your connection and try again.","zones":["01 · WARM-UP","02 · WATCH YOUR STEP","03 · PRECISION DELIVERY","04 · CHRISTMAS EXPERT"],"moreGifts":"MORE GIFTS →","lastDelivery":"LAST DELIVERY","boardOffline":"Shared leaderboard is not connected yet. This preview remembers only your personal best in this browser.","boardReady":"Top 50 players · One leaderboard for all languages · Best attempt per browser · Gifts first, then less time taken. Refreshed {time}.","boardError":"Leaderboard is temporarily unavailable. Use Refresh to try again.","boardEmpty":"No scores yet. Make the first delivery!","boardConnect":"Connect Supabase to start the competition.","saveOffline":"Personal best saved in this browser. The shared leaderboard needs to be connected before ranked play.","saving":"Saving your score…","saveImproved":"New best! Your score is on the shared leaderboard.","savePrevious":"Attempt saved. Your previous best stays on the leaderboard.","saveError":"Your score has not reached the leaderboard. Retry saving before starting another run.","timeTaken":"Time taken","rankingRule":"More wishes rank higher. For equal scores, less time taken wins."},"de":{"title":"Weihnachtswünsche-Challenge · SafeDriver Group","description":"10 Geschenke. 3 Leben. 60 Sekunden. Mach mit bei der Weihnachts-Challenge der SafeDriver Group.","season":"WEIHNACHTS-CHALLENGE · 2026","heading":"Große Sprünge. Große Wünsche.","introCopy":"10 Geschenke. 3 Leben. 60 Sekunden. Wie viele Weihnachtswünsche kannst du auspacken?","playerDefault":"Deine Weihnachtsrunde","gifts":"Geschenke","timeLabel":"Verbleibende Zeit","canvasLabel":"Weihnachtliches Plattformspiel mit seitlichem Bildlauf. Fahre das ennooRental-Auto mit den Pfeiltasten oder A und D. Springe mit Leertaste, W oder Pfeil nach oben.","introTitle":"Deine Wünsche warten.","instructions":"Stoße von unten gegen die Geschenke. Ab dem dritten Geschenk kommen Schneemänner in Gruppen. Später bewegen sich auch die Geschenke – spring im richtigen Moment! Springe auf Schneemänner, um den Landeplatz freizumachen.","languageLabel":"Language / Sprache","nicknameLabel":"Dein Spitzname","nicknamePlaceholder":"z. B. SantaAmSteuer","nicknameNote":"Dein Spitzname erscheint in der gemeinsamen Rangliste. Gleicher Browser, gleicher Spieler.","start":"Los geht’s →","mix":"10 Wünsche aus unserer Sammlung von 50. Zwei Geschenke zum Aufwärmen, dann acht bewegliche Ziele. Schaffst du alle? Jede Runde ist neu gemischt.","touchLabel":"Spielsteuerung per Touch","leftLabel":"Nach links","jump":"Springen","rightLabel":"Nach rechts","controls":"← → oder A / D zum Fahren · Leertaste / ↑ zum Springen · Für jeden Sprung einmal drücken.","controlsNote":"Achte auf bewegliche Geschenke. Die letzten Lieferungen brauchen gutes Timing. Die 60 Sekunden laufen weiter, wenn du den Tab wechselst.","wishEmptyLabel":"DEIN NÄCHSTER WUNSCH IST NUR EINEN SPRUNG ENTFERNT","wishEmpty":"Stoße von unten gegen ein Geschenk und packe ein bisschen Weihnachtsfreude aus.","bestEmpty":"Deine beste Runde wird in diesem Browser gespeichert.","best":"Dein persönlicher Rekord: {score} / {total} Geschenke · {time} s übrig.","wishLabel":"WUNSCH {score} VON {total} · FROHE WEIHNACHTEN","again":"Noch mal spielen","changeName":"Name / Sprache ändern","retrySave":"Ergebnis erneut speichern","collected":"Deine ausgepackten Wünsche","boardTitle":"Weihnachts-Rangliste","refresh":"Aktualisieren","loading":"Rangliste wird geladen …","rank":"Platz","driver":"Fahrer","footer":"Frohe Feiertage von der SafeDriver Group","footerNote":"Spiel so oft du möchtest. Dein bestes Ergebnis zählt.","livesOne":"1 Leben","livesMany":"{count} Leben","complete":"10 Wünsche. Eine Weihnachtslegende!","timeUp":"Die Zeit ist um. Wünsche zugestellt!","noLives":"Keine Leben mehr. Die Weihnachtsfreude bleibt.","result":"{name}, du hast {score} von {total} Wünschen ausgepackt, mit {time} Sekunden Restzeit. Frohe Weihnachten von der SafeDriver Group!","nameError":"Bitte gib einen Spitznamen ein (1–16 Zeichen).","startError":"Das Spiel konnte nicht gestartet werden. Prüfe deine Verbindung und versuche es noch einmal.","zones":["01 · AUFWÄRMEN","02 · VORSICHT, GLATTEIS","03 · PRÄZISIONSFAHRT","04 · WEIHNACHTSPROFI"],"moreGifts":"MEHR GESCHENKE →","lastDelivery":"LETZTE LIEFERUNG","boardOffline":"Die gemeinsame Rangliste ist noch nicht verbunden. Diese Vorschau speichert nur deinen persönlichen Rekord in diesem Browser.","boardReady":"Top 50 · Eine Rangliste für alle Sprachen · Beste Runde pro Browser · Zuerst Geschenke, dann kürzere Spielzeit. Aktualisiert um {time}.","boardError":"Die Rangliste ist gerade nicht verfügbar. Versuche es mit „Aktualisieren“ erneut.","boardEmpty":"Noch keine Ergebnisse. Mach die erste Lieferung!","boardConnect":"Verbinde Supabase, um den Wettbewerb zu starten.","saveOffline":"Dein persönlicher Rekord wurde in diesem Browser gespeichert. Für Ranglistenrunden muss die gemeinsame Rangliste noch verbunden werden.","saving":"Dein Ergebnis wird gespeichert …","saveImproved":"Neuer Rekord! Dein Ergebnis steht in der gemeinsamen Rangliste.","savePrevious":"Runde gespeichert. Dein bisheriger Rekord bleibt in der Rangliste.","saveError":"Dein Ergebnis ist noch nicht in der Rangliste angekommen. Speichere es erneut, bevor du eine neue Runde startest.","timeTaken":"Benötigte Zeit","rankingRule":"Mehr Wünsche bedeuten einen höheren Platz. Bei gleicher Anzahl gewinnt die kürzere Zeit."}};
+const WISHES_DE=["Möge dein Posteingang leer und dein Kaffee im neuen Jahr stark sein.","Wir wünschen dir Weihnachten ohne Verspätungen – anders als bei der U-Bahn.","Mögen 2027 auf all deinen Wegen die Ampeln auf Grün stehen.","Frohe Weihnachten! Abmelden, auftanken – und das E-Auto gleich mitladen.","Mögen deine Feiertage so entspannt sein wie eine leere Autobahn morgens um fünf.","Möge das neue Jahr dir die verdiente Beförderung bringen – und den Parkplatz, den du verdienst.","Wir wünschen dir gemütliche Abende, gutes Essen und keine einzige Arbeitsnachricht.","Möge dein Glühwein heiß und dein WLAN stabil sein.","Auf ein 2027 mit weniger Meetings und mehr „Machen wir einfach!“.","Frohe Weihnachten an alle, die dafür sorgen, dass jede Abholung pünktlich klappt.","Mögen deine Feiertage noch mehr Lacher bringen als euer Teamchat.","Wir wünschen dir Zeit für Freunde, Familie und ein ungestörtes Nickerchen.","Mögen deine Ziele für 2027 größer sein als dein Teller beim Weihnachtsessen.","Genieß die Pause. Das Fitnessstudio kann bis zum 2. Januar warten. Vielleicht auch bis zum 3.","Möge dein neues Jahr elektrisch werden: leise, kraftvoll und mit viel Reichweite.","Danke für die Zusammenarbeit in diesem Jahr. Du hast die schweren Tage leichter gemacht.","Wir wünschen dir Schnee, wenn du ihn möchtest, und freie Straßen, wenn du sie brauchst.","Möge deine Weihnachtsplaylist kein Lied zweimal spielen.","Hoffentlich liefert der Schlitten des Weihnachtsmanns genau das, was auf deiner Wunschliste steht.","Möge 2027 neue Ideen, neue Erfolge und keine einzige „Wie bereits in meiner letzten E-Mail erwähnt“-Nachricht bringen.","Frohe Weihnachten! Du hast dir jedes Plätzchen verdient.","Auf die Kolleginnen und Kollegen, die die besten Snacks mitbringen.","Wir wünschen dir eine so gute Auszeit, dass du dein Passwort vergisst.","Möge deine Reise ins Jahr 2027 bequem, pünktlich und erstklassig sein.","Zeit, in den Urlaubsmodus zu wechseln. Ganz ohne Ladekabel.","Möge deine größte Herausforderung diese Woche sein, wer das letzte Plätzchen bekommt.","Wir wünschen dir Weihnachtslichter, ruhige Tage und einen vollen Akku – innen wie außen.","Auf ein Jahr voller Wachstum: für dich, fürs Team und für deine Pflanzen.","Möge dein 2027 mit einem Plan beginnen und mit einer Geschichte enden, die man gerne erzählt.","Frohe Weihnachten! Pack den großen Koffer. Nächstes Jahr steht Abenteuer auf dem Fahrplan.","Danke, dass unsere Kunden deinetwegen sagen: „Wow, das lief wirklich rund.“","Mögen deine Feiertage voller schöner Unternehmungen sein – ganz ohne Stress.","Wir wünschen dir einen ruhigen Dezember und einen mutigen Januar.","Hoffentlich bleibt dein Weihnachtsbaum stehen und deine Familie entspannt.","Mögen deine schönsten Momente aus 2026 erst das Vorprogramm gewesen sein.","Auf jeden frühen Start, jeden späten Feierabend und jede Rettung in letzter Minute in diesem Jahr.","Frohe Weihnachten! Nimm in dieser Zeit ruhig mal die schönere Strecke.","Mögen deine Feiertage köstlich sein und die Reste niemals ausgehen.","Wir wünschen dir die Energie eines Schnellladers und die Ruhe eines verschneiten Morgens.","Auf ein 2027 mit weniger Deadlines und mehr High-Fives.","Möge im neuen Jahr jeder Plan pünktlich, im Budget und genau richtig aufgehen.","Frohe Weihnachten! Die Welt braucht mehr Menschen, auf die man sich so verlassen kann wie auf dich.","Wir wünschen dir Feiertage mit weniger Bildschirmen und mehr Kaminfeuer.","Hoffentlich steckt dein Weihnachten voller Überraschungen – der guten Art, nicht der Deutschen-Bahn-Art.","Möge 2027 dir mehr freie Wochenenden schenken, als du eingeplant hast.","Atme durch und schau zurück. Du hast dieses Jahr gute Arbeit geleistet.","Wir wünschen dir Gesundheit, Glück und ein richtig gutes Buch.","Möge sich dein neues Jahr wie eine grüne Welle anfühlen: eine gute Ampel nach der anderen.","Frohe Weihnachten! Möge das neue Jahr dich auf dem Beifahrersitz begleiten.","Wir sehen uns 2027: ausgeruht, bereit und mit neuer Energie."];
+const cv=document.getElementById('c'), ctx=cv.getContext('2d');
+const W=640,H=360,G=300,S=34,T=60,TH=52,TOTAL=10,WORLD=1560;
+const $=id=>document.getElementById(id);
+const stage=$('game-stage'),treeWish=$('tree-wish');
+let revealedWish=null,courseTime=0;
+const calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const storage={get(k){try{return localStorage.getItem('sdg-xmas-2026:'+k)}catch{return null}},set(k,v){try{localStorage.setItem('sdg-xmas-2026:'+k,v)}catch{}}};
+let language=storage.get('language')==='de'?'de':'en';
+let lastEndReason='time',saveStatusKey='';
+function tr(key,values={}){const text=MESSAGES[language][key]??MESSAGES.en[key];return typeof text==='string'?text.replace(/\{(\w+)\}/g,(_,name)=>String(values[name]??'')):text}
+function wishText(id){return (language==='de'?WISHES_DE:WISHES)[id]}
+function timeText(seconds){return new Intl.NumberFormat(language,{minimumFractionDigits:1,maximumFractionDigits:1}).format(seconds)}
+function setSaveStatus(key){saveStatusKey=key;$('save-status').textContent=tr(key)}
+function renderResult(){
+  $('result-title').textContent=tr(lastEndReason==='complete'?'complete':lastEndReason==='time'?'timeUp':'noLives');
+  $('result-copy').textContent=tr('result',{name:nickname,score:got.length,total:TOTAL,time:timeText(left)});
+  $('collected').replaceChildren(...got.map(id=>{const li=document.createElement('li');li.textContent=wishText(id);return li}));
+}
+function applyLanguage(refresh=true){
+  document.documentElement.lang=language;document.title=tr('title');
+  document.querySelector('meta[name="description"]').setAttribute('content',tr('description'));
+  document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=tr(el.dataset.i18n));
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>el.setAttribute('aria-label',tr(el.dataset.i18nAria)));
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>el.setAttribute('placeholder',tr(el.dataset.i18nPlaceholder)));
+  $('language').value=language;$('entry-error').textContent='';
+  $('player-name').textContent=nickname||tr('playerDefault');
+  for(const b of bricks)b.t=wishText(b.wishId);
+  $('wish-label').textContent=got.length?tr('wishLabel',{score:got.length,total:TOTAL}):tr('wishEmptyLabel');
+  $('wish').textContent=got.length?wishText(got[got.length-1]):tr('wishEmpty');
+  if(revealedWish)treeWish.textContent=wishText(revealedWish.brick.wishId);
+  if(p)hud();updateBest();if(ended)renderResult();
+  if(saveStatusKey)setSaveStatus(saveStatusKey);
+  if(refresh)void loadBoard();
+}
+$('language').addEventListener('change',()=>{
+  if(running||$('start').disabled){$('language').value=language;return}
+  language=$('language').value==='de'?'de':'en';storage.set('language',language);applyLanguage();
+});
+const keys={l:0,r:0,j:0};
+let bricks=[],pits=[],foes=[],got=[],p,camera=0,lives=3,left=T,inv=0;
+let running=false,ended=false,acc=0,last=0,startTime=0,jumpQueued=false;
+let nickname=storage.get('nickname')||'',attempt=null,finishData=null,saveBusy=false;
+let best;try{best=JSON.parse(storage.get('best-10-snowmen-v3')||'null')}catch{best=null}
+const snow=Array.from({length:70},()=>({x:Math.random()*W,y:Math.random()*H,r:1+Math.random()*2,v:.3+Math.random()*.7}));
+$('pips').replaceChildren(...Array.from({length:TOTAL},()=>document.createElement('i')));
+const pips=[...$('pips').children];
+$('nickname').value=nickname;
+function cleanName(value){return value.replace(/[\u0000-\u001f\u007f-\u009f\u200b-\u200f\u202a-\u202e\u2060-\u206f]/g,'').trim().replace(/\s+/g,' ').slice(0,16)}
+function better(a,b){return !b||a.score>b.score||(a.score===b.score&&a.remaining_ms>b.remaining_ms)}
+function updateBest(){ $('personal-best').textContent=best?tr('best',{score:best.score,total:TOTAL,time:timeText(best.remaining_ms/1000)}):tr('bestEmpty') }
+function releaseKeys(){keys.l=keys.r=keys.j=0;jumpQueued=false}
+function reset(){
+  revealedWish=null;courseTime=0;treeWish.hidden=true;treeWish.textContent='';
+  const pool=WISHES.map((_,id)=>id);
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+  bricks=pool.slice(0,TOTAL).map((wishId,i)=>({x:140+i*138,baseX:140+i*138,y:[185,178,170,160,150,142,136,130,126,122][i],amplitude:[0,0,12,18,24,30,36,42,48,54][i],speed:[0,0,1.4,1.7,2,2.3,2.7,3.1,3.6,4.2][i],phase:i*.8,brand:i%BRANDS.length,wishId,t:wishText(wishId),hit:false,bump:0,grow:0}));
+  pits=[2,4,6,7,8].map((i,n)=>({x:140+i*138+74,w:[42,54,64,72,78][n]}));
+  const spans=[];let edge=0;for(const gap of [...pits,{x:WORLD,w:0}]){spans.push({l:edge+8,r:gap.x-36});edge=gap.x+gap.w}
+  // Groups begin at gift three; short icy ledges still have room to land.
+  foes=spans.flatMap((span,i)=>{
+    const l=i===0?350:span.l,r=span.r,range=r-l;
+    if(range<=8)return [];
+    const count=range>=80?2:1;
+    return Array.from({length:count},(_,j)=>({
+      x:l+range*(j+.5)/count,l,r,d:(i+j)%2?-1:1,
+      v:.8+i*.42,y:G-30,alive:true
+    }));
+  });
+  for(const b of bricks)b.x=brickX(b,0);
+  got=[];camera=0;lives=3;left=T;inv=0;acc=0;last=0;ended=false;finishData=null;releaseKeys();
+  p={x:20,y:G-34,w:52,h:34,vy:0,ground:true,face:1,checkpoint:20};
+  $('results').hidden=true;$('wish-label').textContent=tr('wishEmptyLabel');
+  $('wish').textContent=tr('wishEmpty');
+  pips.forEach(e=>e.classList.remove('on'));hud();updateBest();
+}
+function hud(){
+  $('score').textContent=got.length+' / '+TOTAL;
+  $('timer').textContent=Math.ceil(left)+(language==='de'?' s':'s');$('timer').style.color=left<=10?'#ff8b93':'';
+  $('lives').textContent=tr(lives===1?'livesOne':'livesMany',{count:lives});
+  $('progress').style.width=(p.x/(WORLD-p.w)*100)+'%';
+}
+function hit(b){
+  if(b.hit||ended)return;b.hit=true;b.bump=8;got.push(b.wishId);
+  pips[got.length-1].classList.add('on');
+  $('wish-label').textContent=tr('wishLabel',{score:got.length,total:TOTAL});
+  $('wish').textContent=b.t;
+  revealedWish={brick:b,showAt:performance.now()+300,hideAt:performance.now()+6800};
+  treeWish.textContent=b.t;treeWish.hidden=true;
+  if(got.length===TOTAL)end('complete');
+}
+function loseLife(){
+  if(ended)return;lives--;releaseKeys();
+  if(lives<=0){end('lives');return}
+  inv=100;p.x=p.checkpoint;p.y=G-p.h;p.vy=0;p.ground=true;
+}
+function brickX(b,time){return b.baseX+Math.sin(time*b.speed+b.phase)*b.amplitude}
+function moveBricks(){
+  courseTime+=1/60;
+  for(const b of bricks){
+    if(b.hit)continue;
+    const previousX=b.x;b.x=brickX(b,courseTime);
+    // Carry a player who lands on a moving gift instead of dropping them through it.
+    if(p.ground&&Math.abs(p.y+p.h-b.y)<.01&&p.x+p.w>previousX&&p.x<previousX+S)p.x+=b.x-previousX;
+  }
+}
+function wheelContacts(){
+  const centre=p.x+p.w/2,halfBase=19*CAR_SCALE;
+  return {left:centre-halfBase,right:centre+halfBase};
+}
+function unsupportedOverGap(gap){
+  const wheels=wheelContacts(),radius=6*CAR_SCALE;
+  const edge=p.face>0?wheels.right+radius:wheels.left-radius;
+  // Use the visible front tyre, not the bumper or the rear wheel.
+  return p.face>0?edge>=gap.x&&edge<gap.x+gap.w:edge>gap.x&&edge<=gap.x+gap.w;
+}
+function step(){
+  if(!running)return;
+  moveBricks();
+  if(inv>0)inv--;
+  const oldX=p.x,oldY=p.y,d=keys.r-keys.l;
+  if(d)p.face=d;
+  p.x=clamp(p.x+d*3.2,0,WORLD-p.w);
+  if(jumpQueued&&p.ground){p.vy=-11.5;p.ground=false}
+  jumpQueued=false;
+  p.vy+=.55;p.y+=p.vy;p.ground=false;
+  for(const b of bricks){
+    if(p.x+p.w>b.x+2&&p.x<b.x+S-2){
+      if(p.vy<0&&oldY>=b.y+S&&p.y<b.y+S){p.y=b.y+S;p.vy=1;hit(b)}
+      else if(p.vy>=0&&oldY+p.h<=b.y&&p.y+p.h>b.y){p.y=b.y-p.h;p.vy=0;p.ground=true}
+      else if(p.y+p.h>b.y+2&&p.y<b.y+S-2){
+        if(oldX+p.w<=b.x+2)p.x=b.x-p.w;
+        else if(oldX>=b.x+S-2)p.x=b.x+S;
+      }
+    }
+    if(b.bump>0)b.bump--;
+    if(b.hit&&b.grow<1)b.grow=Math.min(1,b.grow+.04);
+  }
+  if(ended)return;
+  const pit=pits.find(unsupportedOverGap);
+  if(!pit&&p.y+p.h>=G&&oldY+p.h<=G+5){p.y=G-p.h;p.vy=0;p.ground=true}
+  if(p.y>H){loseLife();return}
+  if(p.ground&&p.y===G-p.h&&!pit){
+    const safe=!pits.some(q=>p.x>q.x-50&&p.x<q.x+q.w+25)&&!foes.some(f=>f.alive&&Math.abs(f.x-p.x)<70);
+    if(safe)p.checkpoint=p.x;
+  }
+  for(const f of foes){
+    if(!f.alive)continue;f.x+=f.d*f.v;
+    if(f.x<f.l){f.x=f.l;f.d=1}if(f.x>f.r){f.x=f.r;f.d=-1}
+    if(p.x+p.w>f.x+3&&p.x<f.x+25&&p.y+p.h>f.y+4&&p.y<f.y+30){
+      if(p.vy>0&&oldY+p.h<=f.y+14){f.alive=false;p.vy=-8}
+      else if(inv<=0){loseLife();break}
+    }
+  }
+}
+function end(reason){
+  if(ended)return;ended=true;running=false;releaseKeys();
+  left=Math.max(0,T-(performance.now()-startTime)/1000);
+  if(reason==='time')left=0;
+  finishData={score:got.length,remaining_ms:Math.floor(left*1000)};
+  if(better(finishData,best)){best={...finishData};storage.set('best-10-snowmen-v3',JSON.stringify(best))}updateBest();hud();
+  $('language').disabled=false;
+  lastEndReason=reason;renderResult();
+  $('results').hidden=false;$('results').focus({preventScroll:true});
+  void saveScore();
+}
+async function startRun(){
+  if(running||$('start').disabled)return;
+  const name=cleanName($('nickname').value);
+  if(!name){$('entry-error').textContent=tr('nameError');$('nickname').focus();return}
+  $('start').disabled=true;$('language').disabled=true;$('again').disabled=true;$('entry-error').textContent='';
+  try{
+    attempt=online?await api.start(name):null;
+    nickname=name;storage.set('nickname',name);reset();
+    $('player-name').textContent=nickname;$('intro').hidden=true;cv.focus({preventScroll:true});
+    startTime=performance.now();running=true;
+    draw();
+    if(cv.scrollIntoView)cv.scrollIntoView({block:'center',behavior:'auto'});
+  }catch(error){
+    running=false;releaseKeys();
+    $('intro').hidden=false;$('entry-error').textContent=tr('startError');
+  }finally{$('start').disabled=false;$('again').disabled=false;if(!running)$('language').disabled=false}
+}
+$('entry').addEventListener('submit',e=>{e.preventDefault();void startRun()});
+$('again').onclick=()=>void startRun();
+$('change-name').onclick=()=>{$('intro').hidden=false;$('results').hidden=true;$('nickname').focus()};
+$('retry-save').onclick=()=>void saveScore();
+function key(e,value){
+  if(e.target.closest('input,select,textarea,button,summary'))return;
+  const map={ArrowLeft:'l',a:'l',A:'l',ArrowRight:'r',d:'r',D:'r',' ':'j',ArrowUp:'j',w:'j',W:'j'};
+  const k=map[e.key];if(!k)return;
+  if(running)e.preventDefault();if(value&&k==='j'&&!keys.j&&running)jumpQueued=true;keys[k]=value;
+}
+addEventListener('keydown',e=>key(e,1));addEventListener('keyup',e=>key(e,0));
+addEventListener('blur',releaseKeys);
+document.addEventListener('visibilitychange',()=>{releaseKeys();acc=0;last=0});
+for(const [id,k] of [['bl','l'],['br','r'],['bj','j']]){
+  const el=$(id);el.addEventListener('pointerdown',e=>{e.preventDefault();el.setPointerCapture(e.pointerId);if(k==='j'&&!keys.j&&running)jumpQueued=true;keys[k]=1});
+  for(const type of ['pointerup','pointercancel','lostpointercapture'])el.addEventListener(type,()=>{keys[k]=0});
+}
+function R(c,x,y,w,h){
+  ctx.fillStyle=c;
+  ctx.fillRect(Math.round(x),Math.round(y),w,h);
+}
+
+function snowman(f){
+  const x=f.x,y=f.y;
+
+  ctx.fillStyle="#f1f5f9";
+  ctx.beginPath();
+  ctx.arc(x+14,y+22,9,0,7);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(x+14,y+9,7,0,7);
+  ctx.fill();
+
+  R("#1a1a1a",x+8,y-1,12,3);
+  R("#1a1a1a",x+10,y-6,8,6);
+  R("#d62839",x+8,y+15,12,3);
+  R("#1a1a1a",x+11,y+7,2,2);
+  R("#1a1a1a",x+15,y+7,2,2);
+  R("#f77f00",f.d>0?x+16:x+7,y+10,5,2);
+}
+
+function tree(cx,by,g){
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(cx-22,by-70,44,70);
+  ctx.clip();
+
+  const b=by+(1-g)*TH;
+
+  R("#6b4226",cx-3,b-6,6,6);
+
+  for(let i=0;i<3;i++){
+    const w=14-i*3;
+    const y=b-6-i*12;
+
+    ctx.fillStyle=i%2?"#2a9d6f":"#1f7a55";
+    ctx.beginPath();
+    ctx.moveTo(cx-w,y);
+    ctx.lineTo(cx+w,y);
+    ctx.lineTo(cx,y-18);
+    ctx.fill();
+  }
+
+  R("#f4b942",cx-3,b-TH,6,6);
+  R("#d62839",cx-6,b-14,3,3);
+  R("#d62839",cx+3,b-26,3,3);
+  R("#f4b942",cx-2,b-38,3,3);
+
+  ctx.restore();
+}
+
+const bgc=document.createElement("canvas");
+bgc.width=W;
+bgc.height=H;
+const bulbs=[];
+
+function paintBg(){
+  const g=bgc.getContext("2d");
+
+  const r=(c,x,y,w,h)=>{
+    g.fillStyle=c;
+    g.fillRect(x,y,w,h);
+  };
+
+  const sky=g.createLinearGradient(0,0,0,G);
+  sky.addColorStop(0,"#0c1530");
+  sky.addColorStop(1,"#2a3f78");
+
+  g.fillStyle=sky;
+  g.fillRect(0,0,W,H);
+
+  for(let i=0;i<50;i++){
+    r(
+      "#f1f5f9",
+      Math.random()*W,
+      Math.random()*150,
+      1+(Math.random()<.2),
+      1
+    );
+  }
+
+  g.fillStyle="#f6efd0";
+  g.beginPath();
+  g.arc(588,64,15,0,7);
+  g.fill();
+
+  g.fillStyle="#121d3e";
+  g.beginPath();
+  g.arc(595,60,13,0,7);
+  g.fill();
+
+  [
+    [20,240,40],
+    [70,220,34],
+    [240,245,44],
+    [300,215,38],
+    [610,245,30]
+  ].forEach(([x,y,w])=>{
+    r("#101c3c",x,y,w,G-y);
+
+    for(let k=0;k<3;k++){
+      r("#f4b942",x+6+k*10,y+8+(k%2)*12,3,3);
+    }
+  });
+
+  const gt="#1c2d58";
+  const dm="#18284f";
+
+  r(gt,100,236,140,12);
+  r(gt,106,226,128,10);
+
+  for(let k=0;k<6;k++){
+    r(gt,104+k*25,248,10,52);
+  }
+
+  g.fillStyle="rgba(244,185,66,.18)";
+
+  for(let k=0;k<5;k++){
+    g.fillRect(114+k*25,248,15,52);
+  }
+
+  r(gt,152,216,36,10);
+  r(gt,158,206,6,10);
+  r(gt,176,208,6,8);
+  r(gt,166,198,8,18);
+  r("#f4b942",169,194,2,4);
+
+  r(dm,330,262,70,38);
+  g.fillStyle=dm;
+  g.beginPath();
+  g.arc(365,262,24,Math.PI,0);
+  g.fill();
+
+  r(dm,330,248,8,14);
+  r(dm,392,248,8,14);
+  r(dm,361,228,8,12);
+  r("#f4b942",364,214,2,14);
+  r("#f4b942",361,218,8,2);
+
+  for(let k=0;k<4;k++){
+    r("#f4b942",340+k*14,276,4,8);
+  }
+
+  r(gt,470,270,13,30);
+  r(gt,474,150,5,120);
+  r(gt,475,118,2,32);
+
+  g.fillStyle=gt;
+  g.beginPath();
+  g.arc(476.5,160,14,0,7);
+  g.fill();
+
+  r("#f4b942",463,158,27,2);
+  r("#d62839",475,114,2,4);
+
+  r(gt,552,282,18,18);
+  r(gt,556,214,10,70);
+  r(gt,553,214,16,5);
+  r("#f4b942",558,200,6,12);
+  r("#f4b942",556,204,10,2);
+
+  // Muted shops stay visually separate from the player.
+  [[24,44],[255,40],[405,46],[590,44]].forEach(([x,w])=>{
+    r("#35445a",x,278,w,22);
+    r("#a49370",x+5,283,w-10,9);
+
+    for(let k=0;k*8<w+8;k++){
+      r(k%2?"#8995a5":"#52667c",x-4+k*8,270,8,8);
+    }
+  });
+
+  g.strokeStyle="#0a1226";
+  g.lineWidth=1;
+
+  const cols=["#d62839","#f4b942","#2a9d6f","#4cc9f0"];
+
+  for(let s=0;s<4;s++){
+    g.beginPath();
+
+    for(let u=0;u<=8;u++){
+      const x=s*160+u*20;
+      const y=36+56*(u/8)*(1-u/8);
+
+      if(u)g.lineTo(x,y);
+      else g.moveTo(x,y);
+
+      if(u>0&&u<8){
+        bulbs.push({
+          x,
+          y:y+1,
+          c:cols[(s*8+u)%4]
+        });
+      }
+    }
+
+    g.stroke();
+  }
+}
+
+paintBg();
+
+const BRANDS=[
+  {name:'SafeDriver Group',file:'group.svg'},
+  {name:'SafeDriver ennoo',file:'ennoo.svg'},
+  {name:'SafeDriver NextGen',file:'nextgen.svg'},
+  {name:'Action Worldwide Limousines',file:'action.svg'},
+  {name:'SafeDriver ennoo Rental',file:'rental.svg'}
+];
+const brandImages=BRANDS.map(brand=>{
+  const img=new Image();img.failed=false;img.onerror=()=>{img.failed=true};img.src='assets/'+brand.file;return img;
+});
+const ROAD_SIGNS=[90,140+5*138+S/2];
+function drawBrand(b,y){
+  const logo=brandImages[b.brand],width=68,height=26;
+  const x=b.x+S/2-width/2,top=y+5;
+  // Larger white seals let the full wordmark remain legible on a small gift.
+  R('#101826',x-1,top-1,width+2,height+2);R('#ffffff',x,top,width,height);
+  if(logo&&!logo.failed&&logo.complete&&logo.naturalWidth){
+    const logoWidth=width-8,logoHeight=Math.min(height-6,logoWidth*logo.naturalHeight/logo.naturalWidth);
+    ctx.save();
+    try{
+      ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+      ctx.drawImage(logo,x+4,top+(height-logoHeight)/2,logoWidth,logoHeight);
+    }catch{logo.failed=true}
+    finally{ctx.restore()}
+  }
+  if(!logo||logo.failed){
+    ctx.save();ctx.fillStyle='#111827';ctx.font='bold 8px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(['SafeDriver','ennoo','NextGen','Action','ennoo Rental'][b.brand],b.x+S/2,top+height/2);ctx.restore();
+  }
+}
+function roadSign(cx){
+  const y=G-77,width=164;
+  R('#77879b',cx-54,y+29,4,G-y-29);R('#77879b',cx+50,y+29,4,G-y-29);
+  R('#0a152b',cx-width/2-2,y-2,width+4,34);
+  R('#f1f5f9',cx-width/2,y,width,30);R('#15517f',cx-width/2+3,y+3,width-6,24);
+  R('#ffffff',cx-width/2-1,y-3,width+2,3);
+  ctx.save();ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#ffffff';
+  ctx.fillText('Stresemann Str. 74',cx,y+15);ctx.restore();
+}
+const CAR_SCALE=.88;
+function drawCar(){
+  // Shrink the complete car and its lettering together, anchored at the road.
+  ctx.save();ctx.translate(p.x+p.w/2,p.y+p.h);ctx.scale(CAR_SCALE,CAR_SCALE);ctx.translate(-p.x-p.w/2,-p.y-p.h);
+  const x=p.x,y=p.y;
+  ctx.save();ctx.translate(x,y);
+  if(p.face<0){ctx.translate(p.w,0);ctx.scale(-1,1)}
+  // Body overhangs the wheelbase; the tested collision footprint stays the same.
+  R('#101826',-10,14,72,16);R('#ffd84a',-9,15,70,13);
+  R('#101826',7,4,33,14);R('#bce8ed',9,6,29,10);
+  R('#ffd84a',3,11,7,7);R('#ffd84a',38,11,12,7);
+  R('#ffd84a',10,3,28,3);R('#f1f5f9',10,2,28,2);
+  R('#202b3d',24,12,8,5);R('#f2c9a0',25,6,7,8);R('#101826',30,9,2,2);
+  R('#d62839',24,2,9,4);R('#f1f5f9',23,5,11,2);R('#f1f5f9',22,1,3,3);
+  R('#26374a',35,11,2,5);R('#fff3bd',56,16,5,4);R('#d62839',-9,17,4,4);
+  for(const wheel of [7,45]){
+    ctx.fillStyle='#101826';ctx.beginPath();ctx.arc(wheel,28,6,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#a5b5cf';ctx.beginPath();ctx.arc(wheel,28,2.5,0,Math.PI*2);ctx.fill();
+  }
+  ctx.restore();
+  // The bright door panel and crisp lettering always face the reader.
+  R('#ffffff',x-7,y+16,66,12);
+  ctx.save();ctx.font='900 10.5px Arial,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#050505';
+  ctx.fillText('ennooRental',x+p.w/2,y+22);ctx.restore();
+  ctx.restore();
+}
+function draw(dt=16.67){
+  const shift=calm?0:Math.floor(camera*.12)%W;
+  ctx.drawImage(bgc,-shift,0);if(shift)ctx.drawImage(bgc,W-shift,0);
+  const tt=performance.now();
+  for(const b of bulbs){R(calm||Math.floor(tt/450)%3?b.c:'#3a4a6e',((b.x-shift+W)%W)-2,b.y,4,5)}
+  for(const s of snow){
+    if(!calm){s.y+=s.v*dt/16.67;s.x+=Math.sin(s.y/30)*.3*dt/16.67;if(s.y>G){s.y=-4;s.x=Math.random()*W}}
+    R('#f1f5f9',s.x,s.y,s.r,s.r);
+  }
+  ctx.save();ctx.translate(-Math.round(camera),0);
+  for(const cx of ROAD_SIGNS)if(cx+84>=camera&&cx-84<=camera+W)roadSign(cx);
+  let x0=0;
+  for(const q of [...pits,{x:WORLD,w:0}]){R('#f1f5f9',x0,G,q.x-x0,H-G);R('#dbe4f0',x0,G+8,q.x-x0,H-G-8);x0=q.x+q.w}
+  for(const q of pits){R('#070d1a',q.x,G,q.w,H-G);R('#4cc9f0',q.x,G,q.w,4)}
+  for(const b of bricks){
+    if(b.x+S<camera-30||b.x>camera+W+30)continue;
+    const y=b.y-(b.bump>4?(8-b.bump)*2:b.bump*2),c=b.hit?'#6b7a99':'#d62839',r=b.hit?'#4e5b78':'#f4b942';
+    R('#1a1a1a',b.x-2,y-2,S+4,S+4);R(c,b.x,y,S,S);R(r,b.x+S/2-3,y,6,S);R(r,b.x,y+S/2-3,S,6);
+    if(!b.hit){R(r,b.x+S/2-8,y-6,7,6);R(r,b.x+S/2+1,y-6,7,6)}
+    drawBrand(b,y);
+    if(!b.hit&&b.amplitude){
+      ctx.font="bold 11px 'Courier New',monospace";ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillStyle='#f4b942';ctx.fillText('↔',b.x+S/2,y-9);
+    }
+    if(b.hit)tree(b.x+S/2,b.y,b.grow);
+  }
+  for(const f of foes){if(f.alive&&f.x>camera-40&&f.x<camera+W+40)snowman(f)}
+  if(!(inv>0&&Math.floor(inv/6)%2))drawCar();
+  R('#f4b942',WORLD-55,G-90,3,90);R('#d62839',WORLD-52,G-90,25,16);
+  ctx.restore();
+  const zone=Math.min(3,p.x<450?0:p.x<850?1:p.x<1200?2:3);
+  ctx.font="bold 12px 'Courier New',monospace";ctx.textAlign='left';ctx.textBaseline='top';ctx.fillStyle='#f1f5f9';
+  ctx.fillText(tr('zones')[zone],12,12);
+  ctx.textAlign='right';ctx.fillStyle='#f4b942';ctx.fillText(tr(p.x<WORLD-180?'moreGifts':'lastDelivery'),W-12,12);
+}
+function updateTreeWish(){
+  if(!revealedWish){treeWish.hidden=true;return}
+  const now=performance.now();
+  if(now>=revealedWish.hideAt){revealedWish=null;treeWish.hidden=true;return}
+  const b=revealedWish.brick,scale=cv.clientWidth/W;
+  const cx=(b.x+S/2-camera)*scale;
+  if(now<revealedWish.showAt||cx<0||cx>cv.clientWidth||!scale){treeWish.hidden=true;return}
+  treeWish.hidden=false;
+  const width=Math.min(250,stage.clientWidth-16);
+  treeWish.style.width=width+'px';
+  const x=clamp(cx-width/2,8,stage.clientWidth-width-8);
+  const treeTop=cv.offsetTop+(b.y-TH*b.grow)*scale;
+  treeWish.style.left=x+'px';
+  treeWish.style.top=Math.max(8,treeTop-treeWish.offsetHeight-12)+'px';
+  treeWish.style.setProperty('--tail',clamp(cx-x,14,width-14)+'px');
+}
+let lastHud=0;
+function loop(t){
+  requestAnimationFrame(loop);
+  const dt=Math.min(100,last?t-last:16.67);last=t;
+  if(running){
+    left=Math.max(0,T-(performance.now()-startTime)/1000);
+    if(left<=0)end('time');
+    else{acc+=dt;while(acc>=1000/60&&running){step();acc-=1000/60}}
+  }
+  camera=clamp(p.x-W*.36,0,WORLD-W);
+  if(!document.hidden){draw(dt);updateTreeWish()}
+  if(t-lastHud>100){hud();lastHud=t}
+}
+const config=window.SAFEDRIVER_CONFIG||{};
+const online=!!(config.supabaseUrl&&config.supabasePublishableKey);
+let session=null;try{session=JSON.parse(storage.get('session')||'null')}catch{}
+const api={
+  async request(path,{method='GET',body,token}={}){
+    const res=await fetch(config.supabaseUrl.replace(/\/$/,'')+path,{method,headers:{apikey:config.supabasePublishableKey,'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{})},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(15000)});
+    if(!res.ok)throw new Error('Leaderboard request failed ('+res.status+')');
+    return res.status===204?null:res.json();
+  },
+  async identify(){
+    if(session&&session.expires_at>Date.now()/1000+60)return session.access_token;
+    const data=session?.refresh_token
+      ?await this.request('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:{refresh_token:session.refresh_token}})
+      :await this.request('/auth/v1/signup',{method:'POST',body:{}});
+    if(!data.access_token)throw new Error('Enable anonymous sign-ins in Supabase.');
+    session={access_token:data.access_token,refresh_token:data.refresh_token,expires_at:Math.floor(Date.now()/1000)+(data.expires_in||3600)};
+    storage.set('session',JSON.stringify(session));return session.access_token;
+  },
+  async rpc(name,body){return this.request('/rest/v1/rpc/'+name,{method:'POST',body,token:await this.identify()})},
+  start(name){return this.rpc('start_christmas_run',{p_nickname:name})},
+  finish(run,score){return this.rpc('finish_christmas_run',{p_run_id:run.run_id,p_score:score.score,p_remaining_ms:score.remaining_ms})},
+  board(){return this.request('/rest/v1/rpc/christmas_leaderboard',{method:'POST',body:{}})}
+};
+let boardBusy=false;
+async function loadBoard(){
+  if(boardBusy)return;boardBusy=true;$('refresh-board').disabled=true;
+  try{
+    if(!online){$('board-note').textContent=tr('boardOffline');renderRows([]);return}
+    const rows=await api.board();renderRows(rows);
+    $('board-note').textContent=tr('boardReady',{time:new Date().toLocaleTimeString(language,{hour:'2-digit',minute:'2-digit'})});
+  }catch{$('board-note').textContent=tr('boardError')}
+  finally{boardBusy=false;$('refresh-board').disabled=false}
+}
+function renderRows(rows){
+  $('board').replaceChildren(...(rows.length?rows.map(row=>{
+    const rowElement=document.createElement('tr');for(const value of [row.rank,row.nickname,row.score+' / '+TOTAL,timeText((T*1000-row.remaining_ms)/1000)+(language==='de'?' s':'s')]){const td=document.createElement('td');td.textContent=value;rowElement.append(td)}return rowElement;
+  }):[(()=>{const rowElement=document.createElement('tr'),td=document.createElement('td');td.colSpan=4;td.className='empty';td.textContent=tr(online?'boardEmpty':'boardConnect');rowElement.append(td);return rowElement})()]));
+}
+async function saveScore(){
+  if(saveBusy||!finishData)return;
+  $('retry-save').hidden=true;
+  if(!online){setSaveStatus('saveOffline');return}
+  saveBusy=true;$('again').disabled=true;$('change-name').disabled=true;setSaveStatus('saving');
+  try{
+    const saved=await api.finish(attempt,finishData);
+    setSaveStatus(saved.improved?'saveImproved':'savePrevious');
+    finishData=null;await loadBoard();
+  }catch{setSaveStatus('saveError');$('retry-save').hidden=false}
+  finally{saveBusy=false;$('again').disabled=false;$('change-name').disabled=false}
+}
+$('refresh-board').onclick=()=>void loadBoard();
+setInterval(()=>{if(!document.hidden&&!running)void loadBoard()},30000);
+applyLanguage(false);reset();void loadBoard();requestAnimationFrame(loop);
+
+</script></body></html>
